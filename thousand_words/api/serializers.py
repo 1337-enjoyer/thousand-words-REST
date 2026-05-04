@@ -7,3 +7,5 @@ class WordsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Words
         fields = ('word', 'translation')
+
+
