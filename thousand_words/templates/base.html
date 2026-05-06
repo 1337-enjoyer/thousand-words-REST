@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}English Words Trainer{% endblock %}</title>
+    
+    {% load django_bootstrap5 %}
+    
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
+    
+</head>
+<body>
+    <main class="container py-4">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="bg-light text-center text-muted py-3 mt-5">
+        <div class="container">
+            <small>English Words Trainer — учи слова с удовольствием</small>
+        </div>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
