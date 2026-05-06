@@ -4,6 +4,8 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+from homepage.views import UserCreateView
+
 schema_view = get_schema_view(
     openapi.Info(
         title=f"Thousand word API",
@@ -19,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('homepage.urls')),
     path('auth/', include('django.contrib.auth.urls')),
+    path('auth/registration', UserCreateView.as_view(), name='registration'),
     path('api/', include('api.urls')),
     path(
         'redoc/', 
