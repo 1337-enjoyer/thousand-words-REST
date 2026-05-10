@@ -1,2 +1,20 @@
 {% extends "base.html" %}
 {% load django_bootstrap5 %}
+{% block content%}
+<div class="text-center mb-5">
+    <h1 class="display-4 mb-3">Учи английские слова легко</h1>
+    <p class="lead">
+        1000 самых популярных слов с переводом. Тренируй память в интерактивной игре 
+        и отслеживай свой прогресс каждый день.
+    </p>
+    <div class="mt-4">
+        <a>
+        {# <a href="{% url 'game' %}" class="btn btn-primary btn-lg me-2"> #}
+            🎮 Начать игру
+        </a>
+        <a>
+        {#  <a href="{% url 'word_list' %}" class="btn btn-outline-secondary btn-lg"> #}
+            📚 Смотреть слова
+        </a>
+    </div>
+{% endblock%}

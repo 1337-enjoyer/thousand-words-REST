@@ -23,6 +23,7 @@ urlpatterns = [
     path('auth/', include('django.contrib.auth.urls')),
     path('auth/registration', UserCreateView.as_view(), name='registration'),
     path('api/', include('api.urls')),
+    path('pages/', include('pages.urls')),
     path(
         'redoc/', 
         schema_view.with_ui('redoc', cache_timeout=0), 
