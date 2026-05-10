@@ -1,22 +1,67 @@
 <header>
-  <nav class="navbar shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
     <div class="container">
-      {% with request.resolver_match.view_name as view_name %}
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link {% if view_name == 'homepage:index' %} active {% endif %}"
-              href="{% url 'homepage:index' %}">
-              Главная
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if view_name == 'pages:api' %} active {% endif %}"
-              href="{% url 'pages:api' %}">
-              API
-            </a>
-          </li>
-        </ul>
-      {% endwith %}
+      <a class="navbar-brand fw-bold" href="{% url 'homepage:index' %}">
+        📖 Word Trainer
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        {% with view_name=request.resolver_match.view_name %}
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link {% if view_name == 'homepage:index' %}active{% endif %}" href="{% url 'homepage:index' %}">
+                🏠 Главная
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if view_name == 'pages:api' %}active{% endif %}" href="{% url 'pages:api' %}">
+                📡 API
+              </a>
+            </li>
+          </ul>
+          
+          <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                  👤 {{ user.username }}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <a class="dropdown-item {% if view_name == 'password_change' %}active{% endif %}" href="{% url 'password_change' %}">
+                      🔑 Изменить пароль
+                    </a>
+                  </li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li>
+                    <form method="post" action="{% url 'logout' %}">
+                      {% csrf_token %}
+                      <button type="submit" class="dropdown-item text-danger">
+                        🚪 Выйти
+                      </button>
+                    </form>
+                  </li>
+                </ul>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link {% if view_name == 'login' %}active{% endif %}" href="{% url 'login' %}">
+                  🔑 Войти
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if view_name == 'registration' %}active{% endif %}" href="{% url 'registration' %}">
+                  📝 Регистрация
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        {% endwith %}
+      </div>
     </div>
   </nav>
 </header>

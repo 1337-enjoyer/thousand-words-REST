@@ -27,7 +27,6 @@ class WordViewSet(viewsets.ReadOnlyModelViewSet):
                 description='Успешный ответ',
                 examples={
                     'application/json': {
-                        # Пример для одного вопроса (count=1)
                         "word": "polite",
                         "translations": ["вежливый", "над", "вид"],
                         "solution": "вежливый"

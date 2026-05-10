@@ -11,4 +11,4 @@ class IndexView(TemplateView):
 class UserCreateView(CreateView):
     template_name = 'registration/registration_form.html'
     form_class = UserCreationForm
-    success_url = reverse_lazy('pages:homepage')
+    success_url = reverse_lazy('homepage:index')
