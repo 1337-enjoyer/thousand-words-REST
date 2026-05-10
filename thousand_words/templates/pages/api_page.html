@@ -1,12 +1,19 @@
 {% extends "base.html" %}
 {% load django_bootstrap5 %}
-{% block content%}
+
+{% block content %}
 <div class="text-center mb-5">
-    <h1 class="display-4 mb-3">API</h1>
+    <h1 class="display-4 mb-3">📡 API</h1>
     <p class="lead">
-        API
+        REST API для получения 1000 популярных английских слов и мини-игры
     </p>
     <div class="mt-4">
-        REST API для получения 1000 популярных английских слов и мини-игры.
+        <p class="text-muted">
+            Базовый URL: <code>/api/</code>
+        </p>
+        <a href="{% url 'schema-redoc' %}" class="btn btn-primary btn-lg" target="_blank">
+            📖 Документация
+        </a>
     </div>
-{% endblock%}
+</div>
+{% endblock %}

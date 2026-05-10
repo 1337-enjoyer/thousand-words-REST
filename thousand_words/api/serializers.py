@@ -9,3 +9,11 @@ class WordsSerializer(serializers.ModelSerializer):
         fields = ('word', 'translation')
 
 
+class GameQuerySerializer(serializers.Serializer):
+    count = serializers.IntegerField(
+        min_value=1,
+        max_value=100,
+        required=False,
+        default=1,
+        help_text="Questions count"
+    )
